@@ -43,6 +43,7 @@ _ has_many :users, throuh: :groups_users
 ### Association
 - has_many :groups_users
 - has_many :messages
+_ has_many :users, through: :groups_users
 
 ## groups_usersテーブル
 |Column|Type|Options|
