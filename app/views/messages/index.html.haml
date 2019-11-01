@@ -1,57 +1,32 @@
 .wrapper
+  .post
 
-  = render 'shared/side_bar'
+    = render 'shared/side_bar'
 
-  .chat
-    .header
-      .left-header
-        .left-header__title
-          test-group
-        %ul.left-header__members
-          Member：
-          %li.member
-            A
-          %li.member
-            B
-          %li.member
-            C
-      .right-header
-        .right-header__button
-          Edit
-    .messages
-      .message
-        .upper-message
-          .upper-message__user-name
-            A
-          .upper-message__date
-            2019/10/01
-        .lower-meesage
-          .lower-message__content
-            Hello!
-      .message
-        .upper-message
-          .upper-message__user-name
-            B
-          .upper-message__date
-            2019/10/02
-        .lower-meesage
-          .lower-message__content
-            Good Morning!
-      .message
-        .upper-message
-          .upper-message__user-name
-            C
-          .upper-message__date
-            2019/10/03
-        .lower-meesage
-          .lower-message__content
-            Gppd Evening!
-    .form
-      %form
-        %input.form__message
-        .form__mask
-          %label.form__mask__image
-            = fa_icon 'picture-o', class: 'icon'
-            %input.hidden{type: 'file'}
-        %input.form__submit{type: 'submit', value: 'Send'}
+    .chat
+      .header
+        .left-header
+          .left-header__title
+            test-group
+          %ul.left-header__members
+            Member：
+            %li.member
+              A
+            %li.member
+              B
+            %li.member
+              C
+        .right-header
+          .right-header__button
+            Edit
+      .messages
+        = render partial: 'message', collection: @messages
+      .form
+        = form_for [@group, @message] do |f|
+          = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+          .form__mask
+            = f.label :image, class: 'form__mask__image' do
+              = fa_icon 'picture-o', class: 'icon'
+              = f.file_field :image, class: 'hidden'
+          = f.submit 'Send', class: 'form__submit'
 

@@ -55,6 +55,9 @@ fieldset,
 img {
   border:0;
 }
+* {
+  box-sizing: border-box;
+}
 /*
   TODO think about hanlding inheritence differently, maybe letting IE6 fail a bit...
 */
