@@ -7,18 +7,17 @@
       .header
         .left-header
           .left-header__title
-            test-group
+            =@group.name
           %ul.left-header__members
             Member：
             %li.member
-              A
-            %li.member
-              B
-            %li.member
-              C
+            - @group.users.each do |user|
+              =user.name
         .right-header
           .right-header__button
-            Edit
+            =link_to edit_group_path(@group.id) do
+              Edit
+              
       .messages
         = render partial: 'message', collection: @messages
       .form
